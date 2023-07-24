@@ -1,0 +1,20 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews
+    </IfModule>
+
+    # Make sure .env files not not browseable if in a sub-directory.
+    <FilesMatch "\.env$">
+    Deny from all
+    </FilesMatch>
+    
+</IfModule>
+
+# Disable index view
+Options -Indexes
+
+# Hide a specific file
+<Files .env>
+    Order allow,deny
+    Deny from all
+</Files>
